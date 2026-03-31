@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carrot Frontend
 
-## Getting Started
+제공 문서를 기반으로 진행 중인 AI 실내식물 추천 서비스 프론트엔드 프로젝트입니다.
 
-First, run the development server:
+## 프로젝트 요약
+
+- 목표: 사용자의 실내 환경, 식물 관리 성향, 개인 취향을 분석해 가장 알맞은 반려식물을 추천하는 모바일 반응형 웹 모듈 개발
+- 협업:
+	- 사람과초록(그린템포): 기획, 식물 데이터, 디자인(워크프레임) 제공
+	- 부산SW마이스터고 학생팀: 시스템 설계 및 프론트엔드/백엔드 개발
+- 활용: 개발된 웹 UI 모듈(프로토타입)은 추후 그린템포 쇼핑몰과 가든스텝 서비스에 연동 예정
+
+한 줄 설명: 쇼핑몰 고객에게 딱 맞는 식물을 추천해 주는 스마트 웹 화면을 실무 스택으로 구현하는 프로젝트
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Zustand
+
+## Run
+
+```bash
+npm install
+npm run dev
+```
+
+브라우저에서 아래 주소로 확인합니다.
+
+- http://localhost:3000
+
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+세부 개발 규칙은 AGENTS.md를 참고합니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+    ### 커밋 컨벤션
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    | Type       | Description                                      |
+    |------------|--------------------------------------------------|
+    | **feat**   | 새로운 기능 추가                                  |
+    | **fix**    | 버그 수정                                        |
+    | **refactor** | 코드 리팩토링 (기능 변경 없이 구조 개선)           |
+    | **test**   | 테스트 코드 작성                                  |
+    | **chore**  | 기타 자잘한 작업 (빌드 설정, 패키지 관리 등)        |
+    | **docs**   | 문서 추가 또는 수정                               |
+    | **delete** | 불필요한 코드나 파일 삭제                         |
+    | **build**  | 빌드 관련 파일 및 설정 변경                        |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ---
 
-## Deploy on Vercel
+    ### 커밋 메시지 형식
+    - **형식**: `타입(#이슈번호) :: 변경 사항 요약`
+    - **제목**은 50자 이내, **본문**은 선택적이지만 72자 이내로 요약 설명 권장.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ### 예시
+    ```
+    feat(#123) :: 로그인 기능 추가
+    ```
