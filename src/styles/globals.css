@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/PretendardVariable.ttf") format("truetype");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --color-primary: #2b5f2f;
+    --color-secondary: #4a8c50;
+    --color-accent: #e8f5e9;
+    --color-text: #1a1a1a;
+    --color-sub-text: #555555;
+    --color-warning: #ff9800;
+    --color-background: #f0f0f0;
+    --color-card-bg: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: "Pretendard", sans-serif;
+    line-height: 1.5;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-page px-page py-section;
+  }
+
+  .section-stack {
+    @apply space-y-section;
+  }
+
+  .card-stack {
+    @apply space-y-card;
+  }
+
+  .card {
+    @apply rounded-card bg-card-bg p-card shadow-sm;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-btn px-4 py-2 text-body transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-secondary;
+  }
+
+  .btn-outline {
+    @apply border bg-white text-text hover:bg-accent;
+    border-color: rgb(85 85 85 / 0.2);
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-chip bg-accent px-3 py-1 text-caption text-primary;
+  }
+}
+
+@layer utilities {
+  .pressable {
+    transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .pressable:active {
+    transform: scale(0.97);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp 0.45s ease-out forwards;
+  }
+
+  .fade-in-up-delay-1 {
+    animation-delay: 0.08s;
+  }
+
+  .fade-in-up-delay-2 {
+    animation-delay: 0.16s;
+  }
+
+  .fade-in-up-delay-3 {
+    animation-delay: 0.24s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
