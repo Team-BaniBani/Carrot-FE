@@ -12,14 +12,136 @@
 
 @layer base {
   :root {
-    --color-primary: #2b5f2f;
-    --color-secondary: #4a8c50;
-    --color-accent: #e8f5e9;
-    --color-text: #1a1a1a;
-    --color-sub-text: #555555;
-    --color-warning: #ff9800;
-    --color-background: #f0f0f0;
-    --color-card-bg: #ffffff;
+    /* Palette.Primary */
+    --color-primary-0: #657c3d;
+    --color-primary-10: #7f9852;
+    --color-primary-20: #89a35c;
+    --color-primary-30: #9bb078;
+    --color-primary-40: #aebe93;
+    --color-primary-50: #b7c4a1;
+    --color-primary-60: #c0cbaf;
+    --color-primary-70: #cad2bc;
+
+    /* Palette.Secondary */
+    --color-secondary-0: #db5322;
+    --color-secondary-10: #dd663c;
+    --color-secondary-20: #dc724c;
+    --color-secondary-30: #dd805f;
+    --color-secondary-40: #de8f73;
+    --color-secondary-50: #e09d85;
+    --color-secondary-60: #e1a894;
+    --color-secondary-70: #e2b3a2;
+
+    /* Palette.Tertiary */
+    --color-tertiary-0: #cd961f;
+    --color-tertiary-10: #d8a331;
+    --color-tertiary-20: #d5a948;
+    --color-tertiary-30: #d5ae58;
+    --color-tertiary-40: #d4b268;
+    --color-tertiary-50: #d7b875;
+    --color-tertiary-60: #d7be88;
+    --color-tertiary-70: #d9c496;
+
+    /* Palette.Neutral.Light */
+    --color-neutral-light-0: #f1e5ce;
+    --color-neutral-light-10: #f2ead9;
+    --color-neutral-light-20: #f6f0e5;
+    --color-neutral-light-30: #f8f4ed;
+    --color-neutral-light-n10: #eddcba;
+    --color-neutral-light-n20: #ecd6ac;
+    --color-neutral-light-n30: #ebd2a3;
+
+    /* Palette.Neutral.Dark */
+    --color-neutral-dark-0: #2a1f13;
+    --color-neutral-dark-10: #342719;
+    --color-neutral-dark-20: #4e3e2c;
+    --color-neutral-dark-30: #564838;
+    --color-neutral-dark-n10: #241a0f;
+    --color-neutral-dark-n20: #1d150c;
+    --color-neutral-dark-n30: #1a120a;
+
+    /* Semantic aliases */
+    --color-border-default: var(--color-neutral-dark-0);
+    --color-border-inverse: var(--color-neutral-light-30);
+    --color-border-highlight: var(--color-primary-0);
+    --color-border-subtle: var(--color-neutral-dark-30);
+
+    --color-text-highlight: var(--color-primary-0);
+    --color-text-caption: var(--color-primary-20);
+    --color-text-default: var(--color-neutral-dark-0);
+    --color-text-inverse: var(--color-neutral-light-30);
+    --color-text-warning: var(--color-secondary-0);
+    --color-text-caution: var(--color-tertiary-0);
+
+    --color-layer-canvas: var(--color-neutral-light-0);
+    --color-layer-surface: var(--color-neutral-light-n10);
+    --color-layer-elevated: var(--color-neutral-light-30);
+
+    --color-interactive-primary-default: var(--color-primary-0);
+    --color-interactive-primary-press: var(--color-primary-20);
+    --color-interactive-primary-select: var(--color-primary-40);
+    --color-interactive-primary-caption: var(--color-primary-70);
+
+    --color-interactive-neutral-default: var(--color-neutral-light-n10);
+    --color-interactive-neutral-press: var(--color-neutral-light-10);
+    --color-interactive-neutral-caption: var(--color-neutral-light-20);
+
+    --color-interactive-secondary-default: var(--color-secondary-0);
+    --color-interactive-secondary-press: var(--color-secondary-30);
+    --color-interactive-secondary-select: var(--color-secondary-40);
+
+    /* Backward-compatible project aliases */
+    --color-primary: var(--color-interactive-primary-default);
+    --color-secondary: var(--color-interactive-secondary-default);
+    --color-accent: var(--color-interactive-primary-caption);
+    --color-text: var(--color-text-default);
+    --color-sub-text: var(--color-text-caption);
+    --color-warning: var(--color-text-caution);
+    --color-background: var(--color-layer-canvas);
+    --color-card-bg: var(--color-layer-elevated);
+
+    --color-btn-cancel-bg: var(--color-interactive-neutral-default);
+    --color-btn-cancel-text: var(--color-text-default);
+    --color-btn-cancel-border: var(--color-border-default);
+
+    --color-btn-confirm-bg: var(--color-interactive-primary-default);
+    --color-btn-confirm-text: var(--color-text-inverse);
+    --color-btn-confirm-border: var(--color-interactive-primary-default);
+
+    --color-btn-delete-bg: var(--color-interactive-secondary-default);
+    --color-btn-delete-text: var(--color-text-inverse);
+    --color-btn-delete-border: var(--color-interactive-secondary-default);
+
+    --color-state-success: var(--color-secondary-30);
+    --color-state-info: var(--color-primary-70);
+    --color-state-danger: var(--color-tertiary-0);
+
+    /* Button tokens */
+    --btn-radius: 12px;
+    --btn-height: 48px;
+    --btn-font-size: 20px;
+    --btn-font-weight: 500;
+    --btn-line-height: 30px;
+    --btn-padding-x: 16px;
+
+    --btn-cancel-bg: var(--color-btn-cancel-bg);
+    --btn-cancel-text: var(--color-btn-cancel-text);
+    --btn-cancel-border: var(--color-btn-cancel-border);
+    --btn-cancel-bg-hover: var(--color-interactive-neutral-press);
+
+    --btn-confirm-bg: var(--color-btn-confirm-bg);
+    --btn-confirm-text: var(--color-btn-confirm-text);
+    --btn-confirm-border: var(--color-btn-confirm-border);
+    --btn-confirm-bg-hover: var(--color-interactive-primary-press);
+
+    --btn-delete-bg: var(--color-btn-delete-bg);
+    --btn-delete-text: var(--color-btn-delete-text);
+    --btn-delete-border: var(--color-btn-delete-border);
+    --btn-delete-bg-hover: var(--color-interactive-secondary-press);
+
+    --btn-disabled-bg: var(--color-neutral-light-20);
+    --btn-disabled-text: var(--color-neutral-dark-20);
+    --btn-disabled-border: var(--color-neutral-light-10);
   }
 
   body {
@@ -77,7 +199,7 @@
 
   .btn-outline {
     @apply border bg-white text-text hover:bg-accent;
-    border-color: rgb(85 85 85 / 0.2);
+    border-color: color-mix(in srgb, var(--color-border-subtle) 24%, transparent);
   }
 
   .chip {
