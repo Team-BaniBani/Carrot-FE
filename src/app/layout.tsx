@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-white font-sans text-text">
+      <body className="flex min-h-full flex-col bg-background font-sans text-text">
         <AppShell>{children}</AppShell>
       </body>
     </html>

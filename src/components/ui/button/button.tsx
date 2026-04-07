@@ -1,3 +1,5 @@
+"use client";
+
 import type { ButtonHTMLAttributes, MouseEvent } from "react";
 import { cn } from "@/libs/utils";
 
