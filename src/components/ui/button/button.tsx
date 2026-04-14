@@ -2,6 +2,7 @@
 
 import type { ButtonHTMLAttributes, MouseEvent } from "react";
 import { cn } from "@/libs/utils";
+import type { ReactNode } from "react";
 
 export type ButtonVariant = "default" | "press" | "variant4" | "variant3";
 
@@ -11,6 +12,7 @@ interface ButtonProps
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
   variant: ButtonVariant;
   width?: string;
+  leftIcon?: ReactNode;
 }
 
 const variantClassMap: Record<ButtonVariant, string> = {
@@ -29,6 +31,7 @@ export default function Button({
   onClick,
   variant,
   width,
+  leftIcon,
   disabled,
   className,
   style,
@@ -58,6 +61,7 @@ export default function Button({
       }}
       {...props}
     >
+      {leftIcon ? <span className="mr-2 inline-flex items-center">{leftIcon}</span> : null}
       <span>{text}</span>
     </button>
   );

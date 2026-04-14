@@ -205,6 +205,36 @@
   .chip {
     @apply inline-flex items-center rounded-chip bg-accent px-3 py-1 text-caption text-primary;
   }
+
+  .space-feature-default {
+    background-color: var(--color-primary-0);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .space-feature-default:hover,
+  .space-feature-default:focus-visible {
+    background-color: var(--color-primary-20);
+  }
+
+  .space-feature-default:active {
+    background-color: var(--color-primary-20);
+    transform: scale(0.97);
+  }
+
+  .space-feature-analysis {
+    background-color: var(--color-secondary-0);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .space-feature-analysis:hover,
+  .space-feature-analysis:focus-visible {
+    background-color: var(--color-secondary-30);
+  }
+
+  .space-feature-analysis:active {
+    background-color: var(--color-secondary-30);
+    transform: scale(0.97);
+  }
 }
 
 @layer utilities {
