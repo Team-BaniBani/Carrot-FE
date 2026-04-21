@@ -4,24 +4,26 @@ import { usePathname, useRouter } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs/tabs";
 import { Home, Environmental, Encyclopedia, Plant } from "@/../public/icons/index";
 
+import "@/styles/globals.css";
+
 export default function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();
 
   let currentTab = pathname;
   if (pathname.startsWith("/diagnosis")) currentTab = "/diagnosis";
-  else if (pathname.startsWith("/dictionary")) currentTab = "/dictionary";
+  else if (pathname.startsWith("/handbook")) currentTab = "/handbook";
   else if (pathname.startsWith("/my-plants")) currentTab = "/my-plants";
   else currentTab = "/";
 
   return (
-    <div className="max-w-[400px] w-full z-50 bg-white border-t border-gray-100 pb-safe">
+    <div className="max-w-[600px] w-full bg-background z-50 pb-safe fixed bottom-0">
       <Tabs
         value={currentTab}
         onValueChange={(val) => router.push(val)}
         className="w-auto"
       >
-        <TabsList className="w-full flex justify-between h-16 bg-white rounded-none border-0 p-0">
+        <TabsList className="w-full flex justify-between bg-background h-16 rounded-none border-0 p-0">
           <TabsTrigger
             value="/"
             className="flex flex-col items-center justify-center flex-1 h-full gap-1 data-[state=active]:text-primary text-neutral-dark-30 data-[state=active]:bg-transparent data-[state=active]:shadow-none shadow-none rounded-none transition-none"
@@ -39,7 +41,7 @@ export default function BottomNav() {
           </TabsTrigger>
 
           <TabsTrigger
-            value="/dictionary"
+            value="/handbook"
             className="flex flex-col items-center justify-center flex-1 h-full gap-1 data-[state=active]:text-primary text-neutral-dark-30 data-[state=active]:bg-transparent data-[state=active]:shadow-none shadow-none rounded-none transition-none"
           >
             <Encyclopedia className="w-6 h-6" />
