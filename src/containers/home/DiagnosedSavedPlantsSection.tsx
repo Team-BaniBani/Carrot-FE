@@ -1,13 +1,17 @@
+"use client";
+
 import {
   DIAGNOSED_EMPTY_SAVED_PLANTS_DESCRIPTION,
   DIAGNOSED_EMPTY_SAVED_PLANTS_TITLE,
   DIAGNOSED_SAVED_PLANTS,
   DIAGNOSED_SAVED_PLANTS_TITLE,
 } from "@/constants/home/diagnosed";
+import { useRouter } from "next/navigation";
 import { Plant } from "@/../public/icons/index";
 
 export default function DiagnosedSavedPlantsSection() {
   const hasSavedPlants = DIAGNOSED_SAVED_PLANTS.length > 0;
+  const router = useRouter();
 
   return (
     <section className="mt-6">
@@ -20,7 +24,13 @@ export default function DiagnosedSavedPlantsSection() {
           {DIAGNOSED_SAVED_PLANTS.map((plant) => (
             <article
               key={plant.id}
-              className="flex h-20 items-center gap-4 overflow-hidden rounded-[12px] bg-card-bg shadow-[0_0_20px_rgba(42,31,19,0.1)]"
+              role="button"
+              tabIndex={0}
+              onClick={() => router.push(`/dictionary/${plant.id}`)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") router.push(`/dictionary/${plant.id}`);
+              }}
+              className="cursor-pointer flex h-20 items-center gap-4 overflow-hidden rounded-[12px] bg-card-bg shadow-[0_0_20px_rgba(42,31,19,0.1)]"
             >
               <img src={plant.imageUrl} alt={plant.name} className="h-20 w-20 object-cover" />
 
