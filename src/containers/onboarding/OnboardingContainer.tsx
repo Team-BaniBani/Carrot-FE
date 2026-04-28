@@ -38,13 +38,9 @@ export default function OnboardingContainer() {
   };
 
   const handleSkip = () => {
-    if (currentStep === 3) {
-      markOnboardingDone();
-      router.push("/home");
-      return;
-    }
-
-    router.push("/");
+    // When the user skips, mark onboarding done and go to home
+    markOnboardingDone();
+    router.push("/home");
   };
 
   return (
