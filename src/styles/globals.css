@@ -263,6 +263,11 @@
   .fade-in-up-delay-3 {
     animation-delay: 0.24s;
   }
+
+  .icon-filter-green {
+    filter: brightness(0) saturate(100%) invert(56%) sepia(16%) saturate(1029%) hue-rotate(39deg)
+      brightness(93%) contrast(86%);
+  }
 }
 
 @keyframes fadeInUp {
