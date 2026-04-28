@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import BottomNav from "./BottomNav";
 
 type AppShellProps = {
@@ -8,13 +9,15 @@ type AppShellProps = {
 };
 
 export default function AppShell({ children }: AppShellProps) {
-  // TODO: Header should be rendered here.
+  const pathname = usePathname();
+  const shouldHideBottomNav = pathname.startsWith("/onboarding");
+
   return (
-    <div className="flex flex-col min-h-screen items-center">
-      <main className="flex-1 pb1-6">
+    <div className="flex w-full flex-col items-center h-full">
+      <main className="w-full flex-1 min-h-0">
         {children}
       </main>
-      <BottomNav />
+      {!shouldHideBottomNav ? <BottomNav /> : null}
     </div>
   );
 }

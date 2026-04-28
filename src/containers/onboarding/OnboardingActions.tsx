@@ -14,12 +14,11 @@ export default function OnboardingActions({
   onSkip?: () => void;
 }) {
   return (
-    <section className="mt-auto flex flex-col items-center gap-3 pb-6 pt-2 fade-in-up fade-in-up-delay-3">
+    <section className="mt-auto flex w-full flex-col items-center gap-3 pb-6 pt-2 fade-in-up fade-in-up-delay-3">
       <Button
         text={actionText}
         variant="default"
-        width="311px"
-        className="shadow-sm"
+        className="w-[311px] shadow-sm"
         onClick={onAction}
       />
       <button

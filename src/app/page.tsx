@@ -5,6 +5,7 @@ export default async function Home() {
   const cookieStore = await cookies();
   const isOnboardingDone = cookieStore.get("onboarding-completed")?.value === "true";
 
+  console.log("isOnboardingDone:", isOnboardingDone, "cookies:", cookieStore.getAll());
   if (isOnboardingDone) {
     redirect("/home");
   }

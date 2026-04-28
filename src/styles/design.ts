@@ -18,5 +18,6 @@ export const design = {
   },
   maxWidth: {
     page: "1200px",
+    app: "600px",
   },
 } as const;

@@ -55,7 +55,7 @@ export default function Button({
         className,
       )}
       style={{
-        width: width || "311px",
+        ...(width ? { width } : {}),
         cursor: isDisabled ? "not-allowed" : "pointer",
         ...style,
       }}
