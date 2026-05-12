@@ -14,7 +14,7 @@ export default function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="flex w-full flex-col items-center h-full">
-      <main className="w-full flex-1 min-h-0">
+      <main className="w-full flex-1 min-h-0 flex flex-col overflow-hidden">
         {children}
       </main>
       {!shouldHideBottomNav ? <BottomNav /> : null}
