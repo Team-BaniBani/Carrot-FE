@@ -22,7 +22,6 @@ export const typography: Record<string, TypographyValue> = {
   "label-input": ["24px", { lineHeight: "36px", fontWeight: "500" }],
   "label-button": ["20px", { lineHeight: "30px", fontWeight: "500" }],
 
-  // Legacy aliases
   title: ["20px", { lineHeight: "30px", fontWeight: "700" }],
   subtitle: ["16px", { lineHeight: "24px", fontWeight: "600" }],
   body: ["14px", { lineHeight: "21px", fontWeight: "400" }],

@@ -4,6 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs/tabs";
 import { Home, Environmental, Encyclopedia, Plant } from "@/../public/icons/index";
 
+import "@/styles/globals.css";
+
 export default function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();
@@ -16,13 +18,13 @@ export default function BottomNav() {
   else currentTab = "/home";
 
   return (
-    <div className="z-50 w-full max-w-app border-t border-gray-100 bg-white pb-safe">
+    <div className="z-50 w-full max-w-app bg-white pb-safe">
       <Tabs
         value={currentTab}
         onValueChange={(val) => router.push(val)}
         className="w-full"
       >
-        <TabsList className="w-full flex justify-between h-16 bg-white rounded-none border-0 p-0">
+        <TabsList className="w-full flex justify-between bg-background h-16 rounded-none border-0 p-0">
           <TabsTrigger
             value="/home"
             className="flex flex-col items-center justify-center flex-1 h-full gap-1 data-[state=active]:text-primary text-neutral-dark-30 data-[state=active]:bg-transparent data-[state=active]:shadow-none shadow-none rounded-none transition-none"
@@ -40,7 +42,7 @@ export default function BottomNav() {
           </TabsTrigger>
 
           <TabsTrigger
-            value="/dictionary"
+            value="/handbook"
             className="flex flex-col items-center justify-center flex-1 h-full gap-1 data-[state=active]:text-primary text-neutral-dark-30 data-[state=active]:bg-transparent data-[state=active]:shadow-none shadow-none rounded-none transition-none"
           >
             <Encyclopedia className="w-6 h-6" />

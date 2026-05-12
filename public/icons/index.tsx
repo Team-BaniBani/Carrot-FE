@@ -3,11 +3,37 @@ import React from "react";
 export function Camera(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M38.3337 31.6667C38.3337 32.5507 37.9825 33.3986 37.3573 34.0237C36.7322 34.6488 35.8844 35 35.0003 35H5.00033C4.11627 35 3.26842 34.6488 2.6433 34.0237C2.01818 33.3986 1.66699 32.5507 1.66699 31.6667V13.3333C1.66699 12.4493 2.01818 11.6014 2.6433 10.9763C3.26842 10.3512 4.11627 10 5.00033 10H11.667L15.0003 5H25.0003L28.3337 10H35.0003C35.8844 10 36.7322 10.3512 37.3573 10.9763C37.9825 11.6014 38.3337 12.4493 38.3337 13.3333V31.6667Z" stroke="#89A35C" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M20.0003 28.3333C23.6822 28.3333 26.667 25.3486 26.667 21.6667C26.667 17.9848 23.6822 15 20.0003 15C16.3184 15 13.3337 17.9848 13.3337 21.6667C13.3337 25.3486 16.3184 28.3333 20.0003 28.3333Z" stroke="#89A35C" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M38.3337 31.6667C38.3337 32.5507 37.9825 33.3986 37.3573 34.0237C36.7322 34.6488 35.8844 35 35.0003 35H5.00033C4.11627 35 3.26842 34.6488 2.6433 34.0237C2.01818 33.3986 1.66699 32.5507 1.66699 31.6667V13.3333C1.66699 12.4493 2.01818 11.6014 2.6433 10.9763C3.26842 10.3512 4.11627 10 5.00033 10H11.667L15.0003 5H25.0003L28.3337 10H35.0003C35.8844 10 36.7322 10.3512 37.3573 10.9763C37.9825 11.6014 38.3337 12.4493 38.3337 13.3333V31.6667Z" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M20.0003 28.3333C23.6822 28.3333 26.667 25.3486 26.667 21.6667C26.667 17.9848 23.6822 15 20.0003 15C16.3184 15 13.3337 17.9848 13.3337 21.6667C13.3337 25.3486 16.3184 28.3333 20.0003 28.3333Z" stroke="currentColor" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
+
+export function Confirm(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M5.25 9.375L7.5 11.625L12.75 6.375M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function Tip(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M9.66347 17H14.3364M11.9999 3V4M18.3639 5.63604L17.6568 6.34315M21 11.9999H20M4 11.9999H3M6.34309 6.34315L5.63599 5.63604M8.46441 15.5356C6.51179 13.5829 6.51179 10.4171 8.46441 8.46449C10.417 6.51187 13.5829 6.51187 15.5355 8.46449C17.4881 10.4171 17.4881 13.5829 15.5355 15.5356L14.9884 16.0827C14.3555 16.7155 13.9999 17.5739 13.9999 18.469V19C13.9999 20.1046 13.1045 21 11.9999 21C10.8954 21 9.99995 20.1046 9.99995 19V18.469C9.99995 17.5739 9.6444 16.7155 9.01151 16.0827L8.46441 15.5356Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function Upload(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M10.75 1.125V4.625C10.75 4.85706 10.8422 5.07962 11.0063 5.24372C11.1704 5.40781 11.3929 5.5 11.625 5.5H15.125M15.125 5.5L10.75 1.125H4.625C4.16087 1.125 3.71575 1.30937 3.38756 1.63756C3.05937 1.96575 2.875 2.41087 2.875 2.875V15.125C2.875 15.5891 3.05937 16.0342 3.38756 16.3624C3.71575 16.6906 4.16087 16.875 4.625 16.875H13.375C13.8391 16.875 14.2842 16.6906 14.6124 16.3624C14.9406 16.0342 15.125 15.5891 15.125 15.125V5.5ZM9 8.125V13.375M11.1875 10.3125L9 8.125L6.8125 10.3125" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+
 
 export function Sun(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -154,3 +180,78 @@ export function Turn(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function Close(props : React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function Bookmark(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function Trash(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 38 42" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M1 9H5M5 9H37M5 9V37C5 38.0609 5.42143 39.0783 6.17157 39.8284C6.92172 40.5786 7.93913 41 9 41H29C30.0609 41 31.0783 40.5786 31.8284 39.8284C32.5786 39.0783 33 38.0609 33 37V9M11 9V5C11 3.93913 11.4214 2.92172 12.1716 2.17157C12.9217 1.42143 13.9391 1 15 1H23C24.0609 1 25.0783 1.42143 25.8284 2.17157C26.5786 2.92172 27 3.93913 27 5V9M15 19V31M23 19V31" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function Search(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  );
+}
+
+export function CheckCircle(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+  );
+}
+
+export function Circle(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="12" cy="12" r="10"></circle>
+    </svg>
+  );
+}
+
+export function Wind(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+    </svg>
+  );
+}
+
+export function Thermometer(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+    </svg>
+  );
+}
+
+export function Droplet(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path>
+    </svg>
+  );
+}
+
