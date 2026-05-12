@@ -14,13 +14,13 @@ export default function FilterChip({ label, isActive, onClick }: FilterChipProps
       type="button"
       onClick={onClick}
       className={cn(
-        "flex h-[30px] items-center justify-center rounded-[12px] px-3 transition-colors",
+        "flex h-[32px] items-center justify-center rounded-full px-[16px] transition-colors border",
         isActive
-          ? "bg-primary text-neutral-light-30"
-          : "bg-neutral-light-10 text-neutral-dark-30"
+          ? "bg-[#B7C4A1] border-[#657C3D] text-[#333333]"
+          : "bg-transparent border-[#B2A590] text-[#333333] hover:bg-[#eddcba]"
       )}
     >
-      <span className="text-[12px] font-medium">{label}</span>
+      <span className="text-[14px] font-medium">{label}</span>
     </button>
   );
 }

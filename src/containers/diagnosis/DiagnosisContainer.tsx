@@ -1,8 +1,8 @@
 "use client";
 
 import { Close } from "public/icons";
-import UploadBox from "./UploadBox";
-import TipsSection from "./TipsSection";
+import UploadBox from "./DiagnosisUploadBox";
+import TipsSection from "./DiagnosisTipsSection";
 import DiagnosisReady from "./DiagnosisReady";
 import QuestionStep from "./QuestionStep";
 import AnalyzingStep from "./AnalyzingStep";

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import FilterChip from "./FilterChip";
-import PlantCard from "./PlantCard";
+import FilterChip from "./HandbookFilterChip";
+import PlantCard from "./HandbookPlantCard";
 import { Close } from "public/icons";
-import Image from "next/image";
+
 
 const CATEGORIES = ["전체", "관리 쉬운", "공기 정화", "소형"];
 
@@ -50,25 +50,22 @@ export default function HandbookContainer() {
   const [activeCategory, setActiveCategory] = useState("전체");
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 max-w-[600px] w-full mx-auto">
-      {/* Header */}
-      <header className="flex h-14 items-center justify-center relative max-w-[600px] w-full px-4 border-b border-neutral-light-10">
-       <Close className="absolute left-4" />
+    <div className="flex-1 flex flex-col min-h-0 max-w-[600px] w-full mx-auto bg-[#F2EAD9]">
+      <header className="flex h-[56px] items-center justify-center relative max-w-[600px] w-full px-[16px]">
+       <Close className="absolute left-[16px]" />
         <h1 className="text-[16px] font-bold text-neutral-dark-0">식물 추천</h1>
       </header>
 
-      {/* Hero Section */}
-      <div className="flex flex-col gap-2 px-4 py-6">
-        <h2 className="text-[24px] font-bold leading-[36px] text-neutral-dark-0 whitespace-pre-line">
+      <div className="flex flex-col gap-[8px] px-[16px] py-[24px]">
+        <h2 className="text-[24px] font-bold leading-[36px] text-primary-0 whitespace-pre-line">
           {"생활 공간에 맞는\n식물을 찾았어요"}
         </h2>
-        <p className="text-[14px] text-neutral-dark-30 opacity-70">
+        <p className="text-[14px] text-primary-10">
           햇빛이 풍부한 공간 · {MOCK_PLANTS.length}종 추천
         </p>
       </div>
 
-      {/* Filter Chips */}
-      <div className="flex gap-2 px-4 pb-4 overflow-x-auto no-scrollbar">
+      <div className="flex gap-[8px] px-[16px] pb-[16px] overflow-x-auto no-scrollbar shrink-0">
         {CATEGORIES.map((category) => (
           <FilterChip
             key={category}
@@ -79,9 +76,8 @@ export default function HandbookContainer() {
         ))}
       </div>
 
-      {/* Plant List - Scrollable Area */}
       <div className="flex-1 min-h-0 overflow-y-scroll max-w-[600px] w-full no-scrollbar">
-        <div className="flex flex-col gap-4 w-full px-4 pb-20">
+        <div className="flex flex-col gap-[16px] w-full px-[16px] pb-[80px]">
           {MOCK_PLANTS.map((plant) => (
             <PlantCard
               key={plant.id}
