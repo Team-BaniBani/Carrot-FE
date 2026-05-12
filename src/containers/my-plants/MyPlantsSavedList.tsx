@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Heart } from "@/../public/icons/index";
+import { BlurIcon, Heart, LucidityIcon } from "@/../public/icons/index";
 import { cn } from "@/libs/utils";
-import { MY_PLANTS_SAVED } from "@/constants/my-plants/content";
+import { EnvironmentIconKey, MY_PLANTS_SAVED } from "@/constants/my-plants/content";
 
 const CHIP_CLASS_NAME =
   "inline-flex items-center rounded-full bg-primary-40 px-2 py-[2px] text-body-s text-primary";
+
+const ENVIRONMENT_ICON_MAP: Record<EnvironmentIconKey, typeof LucidityIcon> = {
+  blur: BlurIcon,
+  lucidity: LucidityIcon,
+};
 
 export default function MyPlantsSavedList() {
   const router = useRouter();
@@ -43,11 +48,10 @@ export default function MyPlantsSavedList() {
           >
             <header className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <img
-                  src={plant.environmentIconUrl}
-                  alt=""
-                  className="h-6 w-6"
-                />
+                {(() => {
+                  const EnvironmentIcon = ENVIRONMENT_ICON_MAP[plant.environmentIcon];
+                  return <EnvironmentIcon className="h-6 w-6" />;
+                })()}
                 <span className="text-body-s text-neutral-dark-0 whitespace-nowrap">
                   {plant.environmentLabel}
                 </span>

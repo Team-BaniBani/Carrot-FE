@@ -1,5 +1,3 @@
-const ENV_SUNNY_ICON_URL = "http://localhost:3845/assets/9d2d66e4f7a250c19a7b609f5cdb7a261601cddb.svg";
-const ENV_SHADE_ICON_URL = "http://localhost:3845/assets/33321bcf6a495f2673325938b16601893ce1545e.svg";
 const STUCKY_IMAGE_URL = "http://localhost:3845/assets/6be99f52918ab1107ee0acfb1c46d8a013efbb7e.png";
 const MONSTERA_IMAGE_URL = "http://localhost:3845/assets/67857e92afc53bc7e6b76ad289ef6d9fd87852bb.png";
 
@@ -19,10 +17,12 @@ export type MyPlantTags = {
   secondary: string[];
 };
 
+export type EnvironmentIconKey = "blur" | "lucidity";
+
 export type MyPlantItem = {
   id: string;
   environmentLabel: string;
-  environmentIconUrl: string;
+  environmentIcon: EnvironmentIconKey;
   imageUrl: string;
   imageOverlayUrl?: string;
   name: string;
@@ -34,7 +34,7 @@ export const MY_PLANTS_SAVED: MyPlantItem[] = [
   {
     id: "stucky",
     environmentLabel: "햇빛 풍부한 공간",
-    environmentIconUrl: ENV_SUNNY_ICON_URL,
+    environmentIcon: "lucidity",
     imageUrl: STUCKY_IMAGE_URL,
     name: "스투키",
     englishName: "Stucky",
@@ -46,7 +46,7 @@ export const MY_PLANTS_SAVED: MyPlantItem[] = [
   {
     id: "monstera",
     environmentLabel: "반음지 공간",
-    environmentIconUrl: ENV_SHADE_ICON_URL,
+    environmentIcon: "blur",
     imageUrl: STUCKY_IMAGE_URL,
     imageOverlayUrl: MONSTERA_IMAGE_URL,
     name: "몬스테라",
