@@ -275,6 +275,30 @@
   .fade-in-up-delay-3 {
     animation-delay: 0.24s;
   }
+
+  .icon-filter-green {
+    filter: brightness(0) saturate(100%) invert(56%) sepia(16%) saturate(1029%) hue-rotate(39deg)
+      brightness(93%) contrast(86%);
+  }
+
+  .heart-filter {
+    filter: none;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .heart-filter path {
+    fill: transparent;
+    transition: fill 0.2s ease;
+  }
+
+  .heart-filter-active {
+    filter: drop-shadow(0 1px 2px rgba(42, 31, 19, 0.2));
+    transform: scale(1.05);
+  }
+
+  .heart-filter-active path {
+    fill: var(--color-secondary-0);
+  }
 }
 
 @keyframes fadeInUp {
