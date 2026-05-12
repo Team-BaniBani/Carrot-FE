@@ -1,5 +1,15 @@
 import React from "react";
 
+const ARROW_LEFT_ICON_URL = "/icons/back.svg";
+const WATERING_ICON_URL = "/icons/water.svg";
+const HUMIDITY_ICON_URL = "/icons/green_water.svg";
+const TEMPERATURE_ICON_URL = "/icons/temp.svg";
+const SUNLIGHT_ICON_URL = "/icons/sun.svg";
+
+type ImageIconProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
+  alt?: string;
+};
+
 export function Camera(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -55,6 +65,34 @@ export function Plant(props: React.SVGProps<SVGSVGElement>) {
       <path d="M12 12H15C16.5913 12 18.1174 11.3679 19.2426 10.2426C20.3679 9.11742 21 7.5913 21 6V5H18C16.4087 5 14.8826 5.63214 13.7574 6.75736C12.6321 7.88258 12 9.4087 12 11H9C7.4087 11 5.88258 10.3679 4.75736 9.24264C3.63214 8.11742 3 6.5913 3 5V3H6C7.5913 3 9.11742 3.63214 10.2426 4.75736C11.3679 5.88258 12 7.4087 12 9V15M7 15H17V19C17 19.5304 16.7893 20.0391 16.4142 20.4142C16.0391 20.7893 15.5304 21 15 21H9C8.46957 21 7.96086 20.7893 7.58579 20.4142C7.21071 20.0391 7 19.5304 7 19V15Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
+}
+
+export function Heart(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M22 8.86222C22 10.4087 21.4062 11.8941 20.3458 12.9929C17.9049 15.523 15.5374 18.1613 13.0053 20.5997C12.4249 21.1505 11.5042 21.1304 10.9488 20.5547L3.65376 12.9929C1.44875 10.7072 1.44875 7.01723 3.65376 4.73157C5.88044 2.42345 9.50794 2.42345 11.7346 4.73157L11.9998 5.00642L12.2648 4.73173C13.3324 3.6245 14.7864 3 16.3053 3C17.8242 3 19.2781 3.62444 20.3458 4.73157C21.4063 5.83045 22 7.31577 22 8.86222Z" stroke="#AD9A85" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function ArrowLeft({ alt = "", ...props }: ImageIconProps) {
+  return <img src={ARROW_LEFT_ICON_URL} alt={alt} {...props} />;
+}
+
+export function WateringIcon({ alt = "", ...props }: ImageIconProps) {
+  return <img src={WATERING_ICON_URL} alt={alt} {...props} />;
+}
+
+export function TemperatureIcon({ alt = "", ...props }: ImageIconProps) {
+  return <img src={TEMPERATURE_ICON_URL} alt={alt} {...props} />;
+}
+
+export function HumidityIcon({ alt = "", ...props }: ImageIconProps) {
+  return <img src={HUMIDITY_ICON_URL} alt={alt} {...props} />;
+}
+
+export function SunlightIcon({ alt = "", ...props }: ImageIconProps) {
+  return <img src={SUNLIGHT_ICON_URL} alt={alt} {...props} />;
 }
 
 export function ArrowGreen(props: React.SVGProps<SVGSVGElement>) {
