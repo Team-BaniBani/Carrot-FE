@@ -1,8 +1,9 @@
 "use client";
 
-import { Close } from "public/icons";
+import { useState } from "react";
+import { Close, Confirm } from "public/icons";
 import { cn } from "@/libs/utils";
-import Image from "next/image";
+import DeletePhotoModal from "./DeletePhotoModal";
 
 interface DiagnosisReadyProps {
   images: { id: string; url: string }[];
@@ -17,7 +18,20 @@ export default function DiagnosisReady({
   onAddMore,
   className,
 }: DiagnosisReadyProps) {
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
   const mainImage = images[0]?.url;
+
+  const handleDeleteClick = (id: string) => {
+    setDeletingId(id);
+  };
+
+  const handleConfirmDelete = () => {
+    if (deletingId) {
+      onRemove(deletingId);
+      setDeletingId(null);
+    }
+  };
 
   return (
     <div className={cn("flex flex-col gap-[24px]", className)}>
@@ -32,10 +46,16 @@ export default function DiagnosisReady({
       </div>
 
       <div className="flex flex-col gap-[12px]">
-        <div className="flex justify-between items-center">
-          <span className="text-[12px] font-medium text-neutral-dark-n10">
+        <div className="flex items-center gap-[4px]">
+          <span
+            className={cn(
+              "text-[12px] font-medium",
+              images.length >= 3 ? "text-primary-0" : "text-gray-400"
+            )}
+          >
             {images.length}/3장
           </span>
+          {images.length >= 3 && <Confirm className="text-primary-0"/>}
         </div>
 
         <div className="flex gap-[12px]">
@@ -50,7 +70,7 @@ export default function DiagnosisReady({
                 className="w-full h-full object-cover"
               />
               <button
-                onClick={() => onRemove(img.id)}
+                onClick={() => handleDeleteClick(img.id)}
                 className="absolute top-[4px] right-[4px] w-[20px] h-[20px] flex items-center justify-center bg-black/40 rounded-full text-white"
               >
                 <Close className="w-[12px] h-[12px]" />
@@ -58,17 +78,15 @@ export default function DiagnosisReady({
             </div>
           ))}
 
-          {/* Empty Slots / Add Button */}
           {images.length < 3 && (
             <button
               onClick={onAddMore}
-              className="flex items-center justify-center w-[80px] h-[80px] rounded-[12px] border border-dashed border-interactive-primary-default bg-interactive-primary-caption text-secondary shrink-0 active:scale-[0.95] transition-transform"
+              className="flex items-center justify-center w-[80px] h-[80px] rounded-[12px] border border-dashed border-gray-400 shrink-0 active:scale-[0.95] transition-transform"
             >
-              <span className="text-[24px] font-light">+</span>
+              <span className="text-[24px] font-light text-gray-400">+</span>
             </button>
           )}
 
-          {/* Placeholder slots to show 3 slots total if needed */}
           {Array.from({ length: Math.max(0, 2 - images.length) }).map((_, i) => (
             <div
               key={`empty-${i}`}
@@ -77,6 +95,13 @@ export default function DiagnosisReady({
           ))}
         </div>
       </div>
+
+      {deletingId && (
+        <DeletePhotoModal
+          onClose={() => setDeletingId(null)}
+          onConfirm={handleConfirmDelete}
+        />
+      )}
     </div>
   );
 }

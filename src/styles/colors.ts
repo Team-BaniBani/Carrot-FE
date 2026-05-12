@@ -53,6 +53,18 @@ export const colors = {
     n20: "var(--color-neutral-dark-n20)",
     n30: "var(--color-neutral-dark-n30)",
   },
+  gray: {
+    50: "var(--color-gray-50)",
+    100: "var(--color-gray-100)",
+    200: "var(--color-gray-200)",
+    300: "var(--color-gray-300)",
+    400: "var(--color-gray-400)",
+    500: "var(--color-gray-500)",
+    600: "var(--color-gray-600)",
+    700: "var(--color-gray-700)",
+    800: "var(--color-gray-800)",
+    900: "var(--color-gray-900)",
+  },
   border: {
     default: "var(--color-border-default)",
     inverse: "var(--color-border-inverse)",
@@ -85,7 +97,6 @@ export const colors = {
     caution: "var(--color-text-caution)",
   },
 
-  // Backward-compatible aliases
   accent: "var(--color-accent)",
   "sub-text": "var(--color-sub-text)",
   warning: "var(--color-warning)",

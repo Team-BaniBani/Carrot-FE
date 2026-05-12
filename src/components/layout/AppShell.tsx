@@ -8,7 +8,6 @@ type AppShellProps = {
 };
 
 export default function AppShell({ children }: AppShellProps) {
-  // TODO: Header should be rendered here.
   return (
     <div className="flex flex-col h-dvh overflow-hidden items-center">
       <main className="flex-1 w-full flex flex-col min-h-0">
