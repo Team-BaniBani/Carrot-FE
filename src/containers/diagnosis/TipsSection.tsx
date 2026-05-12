@@ -1,4 +1,4 @@
-import { Sun } from "public/icons";
+import { Tip } from "public/icons";
 import { cn } from "@/libs/utils";
 
 interface TipsSectionProps {
@@ -20,8 +20,8 @@ export default function TipsSection({ className }: TipsSectionProps) {
       )}
     >
       <div className="flex items-center gap-[12px]">
-        <Sun className="w-6 h-6 text-[#DD805F]" />
-        <h3 className="text-[14px] font-bold text-neutral-dark-0 leading-[21px]">
+        <Tip className="w-6 h-6 text-primary-0" />
+        <h3 className="text-[14px] font-regular text-primary-0 leading-[21px]">
           좋은 사진 팁
         </h3>
       </div>
@@ -29,7 +29,7 @@ export default function TipsSection({ className }: TipsSectionProps) {
         {tips.map((tip, index) => (
           <li
             key={index}
-            className="text-[12px] text-neutral-dark-20 leading-[18px] flex items-start gap-[8px]"
+            className="text-[12px] text-primary-0 leading-[18px] flex items-start gap-[8px]"
           >
             <span className="w-[4px] h-[4px] rounded-full bg-neutral-light-10 mt-[7px] shrink-0" />
             {tip}

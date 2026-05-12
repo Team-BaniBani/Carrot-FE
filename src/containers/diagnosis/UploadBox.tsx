@@ -1,4 +1,4 @@
-import { Camera } from "public/icons";
+import { Camera,Upload } from "public/icons";
 import { cn } from "@/libs/utils";
 import { useRef, ChangeEvent } from "react";
 
@@ -37,13 +37,13 @@ export default function UploadBox({ onUpload, className }: UploadBoxProps) {
       />
       
       <div className="flex flex-col items-center gap-[12px]">
-        <Camera className="text-secondary" />
+        <Camera className="w-[40px] h-[40px] text-primary-0 stroke-2" />
         
         <div className="flex flex-col items-center gap-[6px] text-center">
-          <span className="text-[16px] font-bold text-neutral-dark-0 leading-[24px]">
+          <span className="text-[16px] font-bold text-primary-0 leading-[24px]">
             사진을 추가해주세요
           </span>
-          <span className="text-[12px] text-neutral-dark-30 leading-[18px]">
+          <span className="text-[12px] text-primary-10 leading-[18px]">
             최대 3장 · JPG, PNG · 5MB 이하
           </span>
         </div>
@@ -52,16 +52,16 @@ export default function UploadBox({ onUpload, className }: UploadBoxProps) {
       <div className="flex gap-[8px] mt-[16px]">
         <button 
           onClick={handleUploadClick}
-          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-white border border-neutral-light-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
+          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-primary-30 border border-primary-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
         >
-          <Camera className="w-[14px] h-[14px] text-secondary" />
-          촬영
+          <Camera className="w-[14px] h-[14px]"/>
+          촬영  
         </button>
         <button 
           onClick={handleUploadClick}
-          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-white border border-neutral-light-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
+          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-primary-30 border border-primary-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
         >
-          <span className="inline-block w-[14px] h-[14px] text-center font-bold text-secondary leading-[14px]">+</span>
+          <Upload className="w-[14px] h-[14px]" />
           업로드
         </button>
       </div>

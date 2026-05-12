@@ -29,6 +29,7 @@ export default function DiagnosisContainer() {
     setImages((prev) => [...prev, ...newImages]);
   };
 
+
   const handleRemove = (id: string) => {
     setImages((prev) => {
       const target = prev.find((img) => img.id === id);
@@ -45,16 +46,16 @@ export default function DiagnosisContainer() {
         <button onClick={() => router.back()} className="p-[4px]">
           <Close className="w-6 h-6 rotate-180" />
         </button>
-        <h1 className="text-[16px] font-bold text-neutral-dark-0">사진 업로드</h1>
+        <h1 className="text-[16px] font-regular text-neutral-dark-0">사진 업로드</h1>
       </header>
 
       <div className="flex-1 overflow-y-auto no-scrollbar">
         <div className="flex flex-col gap-[32px] px-[16px] py-[24px]">
-          <div className="flex flex-col gap-[8px]">
-            <h2 className="text-[24px] font-bold leading-[36px] text-neutral-dark-0 whitespace-pre-line">
+          <div className="flex flex-col gap-[8px] justify-center items-center">
+            <h2 className="text-[24px] font-bold leading-[36px] text-primary-0 whitespace-pre-line">
               {isEmpty ? "내 공간을 보여주세요!" : "사진이 준비됐어요!"}
             </h2>
-            <p className="text-[14px] text-neutral-dark-30 leading-[21px]">
+            <p className="text-[14px] text-primary-10 leading-[21px]">
               {isEmpty
                 ? "실내 사진을 올리면 AI가 환경을 분석해드려요"
                 : "여러 장이면 분석이 더 정확해요"}

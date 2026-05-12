@@ -21,7 +21,6 @@ export default function DiagnosisReady({
 
   return (
     <div className={cn("flex flex-col gap-[24px]", className)}>
-      {/* Main Preview */}
       <div className="relative w-full h-[228px] rounded-card overflow-hidden bg-neutral-light-n30">
         {mainImage && (
           <img
@@ -32,16 +31,14 @@ export default function DiagnosisReady({
         )}
       </div>
 
-      {/* Thumbnails Section */}
       <div className="flex flex-col gap-[12px]">
         <div className="flex justify-between items-center">
-          <span className="text-[12px] font-medium text-neutral-dark-10">
+          <span className="text-[12px] font-medium text-neutral-dark-n10">
             {images.length}/3장
           </span>
         </div>
 
         <div className="flex gap-[12px]">
-          {/* Selected Images */}
           {images.map((img) => (
             <div
               key={img.id}
