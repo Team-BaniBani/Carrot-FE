@@ -20,7 +20,7 @@ export default function DiagnosisContainer() {
 
   const handleUpload = (files: FileList) => {
     const newImages: ImageItem[] = Array.from(files)
-      .slice(0, 3 - images.length) // Max 3 images
+      .slice(0, 3 - images.length)
       .map((file) => ({
         id: Math.random().toString(36).substring(7),
         url: URL.createObjectURL(file),
@@ -41,21 +41,15 @@ export default function DiagnosisContainer() {
 
   return (
     <div className="flex flex-col flex-1 w-full max-w-[600px] mx-auto min-h-0 bg-background text-neutral-dark-0 relative">
-      {/* Header */}
       <header className="flex items-center justify-between h-[56px] px-[16px] bg-background border-b border-neutral-light-10 shrink-0">
         <button onClick={() => router.back()} className="p-[4px]">
           <Close className="w-6 h-6 rotate-180" />
         </button>
         <h1 className="text-[16px] font-bold text-neutral-dark-0">사진 업로드</h1>
-        <button onClick={() => router.push("/")} className="p-[4px]">
-          <Close className="w-6 h-6" />
-        </button>
       </header>
 
-      {/* Main Content */}
       <div className="flex-1 overflow-y-auto no-scrollbar">
         <div className="flex flex-col gap-[32px] px-[16px] py-[24px]">
-          {/* Hero Section */}
           <div className="flex flex-col gap-[8px]">
             <h2 className="text-[24px] font-bold leading-[36px] text-neutral-dark-0 whitespace-pre-line">
               {isEmpty ? "내 공간을 보여주세요!" : "사진이 준비됐어요!"}
@@ -67,7 +61,6 @@ export default function DiagnosisContainer() {
             </p>
           </div>
 
-          {/* Conditional UI */}
           {isEmpty ? (
             <UploadBox onUpload={handleUpload} />
           ) : (
@@ -78,24 +71,22 @@ export default function DiagnosisContainer() {
             />
           )}
 
-          {/* Action Button (Now part of the flow) */}
           {!isEmpty && (
             <div className="mt-4">
               <Button
                 text="분석하기"
                 variant="default"
                 width="100%"
-                onClick={() => {/* Navigate to analysis result */}}
+                onClick={() => {}}
               />
             </div>
           )}
 
-          {/* Tips Area - Show only when empty or keep it? Figma implies empty state only for Tips. */}
+
           {isEmpty && <TipsSection />}
         </div>
       </div>
 
-      {/* Hidden input for adding more in Ready state */}
       {!isEmpty && (
         <input
           type="file"
