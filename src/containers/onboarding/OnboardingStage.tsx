@@ -17,9 +17,9 @@ export default function OnboardingStage({
   description: string;
 }) {
   return (
-    <section className="flex flex-1 flex-col items-center pt-6 text-center">
+    <section className="flex w-full flex-1 flex-col items-center pt-6 text-center">
       <div className="fade-in-up fade-in-up-delay-1">
-        <div className="flex h-[355px] w-[311px] items-center justify-center rounded-card bg-[#eddcba] shadow-[0_0_0_1px_rgba(42,31,19,0.04)]">
+        <div className="flex h-[355px] w-full min-w-[311px] items-center justify-center rounded-card bg-[#eddcba] shadow-[0_0_0_1px_rgba(42,31,19,0.04)]">
           <Image
             src={imageSrc}
             alt={imageAlt}

@@ -26,7 +26,7 @@ export default function SpaceFeatureAnalysis({
       type="button"
       onClick={onClick}
       className={cn(
-        "space-feature-analysis flex h-[178px] w-[343px] items-start justify-between rounded-[12px] px-6 py-6 text-left",
+        "space-feature-analysis flex h-[178px] w-full items-start justify-between rounded-[12px] px-6 py-6 text-left",
         className,
       )}
     >

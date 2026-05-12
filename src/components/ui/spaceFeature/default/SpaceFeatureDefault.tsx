@@ -22,7 +22,7 @@ export default function SpaceFeatureDefault({
       type="button"
       onClick={onClick}
       className={cn(
-        "space-feature-default flex h-[154px] w-[343px] items-start justify-between rounded-[12px] px-6 py-6 text-left",
+        "space-feature-default flex h-[154px] w-full items-start justify-between rounded-[12px] px-6 py-6 text-left",
         className,
       )}
     >

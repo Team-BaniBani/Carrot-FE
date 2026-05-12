@@ -9,21 +9,22 @@ export default function BottomNav() {
   const router = useRouter();
 
   let currentTab = pathname;
-  if (pathname.startsWith("/diagnosis")) currentTab = "/diagnosis";
+  if (pathname === "/" || pathname.startsWith("/home")) currentTab = "/home";
+  else if (pathname.startsWith("/diagnosis")) currentTab = "/diagnosis";
   else if (pathname.startsWith("/dictionary")) currentTab = "/dictionary";
   else if (pathname.startsWith("/my-plants")) currentTab = "/my-plants";
-  else currentTab = "/";
+  else currentTab = "/home";
 
   return (
-    <div className="max-w-[400px] w-full z-50 bg-white border-t border-gray-100 pb-safe">
+    <div className="z-50 w-full max-w-app border-t border-gray-100 bg-white pb-safe">
       <Tabs
         value={currentTab}
         onValueChange={(val) => router.push(val)}
-        className="w-auto"
+        className="w-full"
       >
         <TabsList className="w-full flex justify-between h-16 bg-white rounded-none border-0 p-0">
           <TabsTrigger
-            value="/"
+            value="/home"
             className="flex flex-col items-center justify-center flex-1 h-full gap-1 data-[state=active]:text-primary text-neutral-dark-30 data-[state=active]:bg-transparent data-[state=active]:shadow-none shadow-none rounded-none transition-none"
           >
             <Home className="w-6 h-6" />
