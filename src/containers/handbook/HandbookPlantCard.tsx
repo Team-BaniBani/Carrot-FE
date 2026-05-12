@@ -31,7 +31,7 @@ export default function PlantCard({
   onBookmarkClick,
 }: PlantCardProps) {
   return (
-    <div className="flex flex-col gap-[16px] rounded-[16px] bg-neutral-light-0 p-[16px] w-full max-w-[600px]">
+    <div className="flex flex-col gap-[16px] rounded-[16px] bg-neutral-light-20 p-[16px] w-full max-w-[600px]">
       <div className="flex gap-[16px]">
         {/* Plant Image Placeholder */}
         <div className="relative h-[100px] w-[100px] shrink-0 overflow-hidden rounded-[12px] bg-neutral-light-20">

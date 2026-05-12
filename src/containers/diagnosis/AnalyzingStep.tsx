@@ -32,8 +32,14 @@ export default function AnalyzingStep({ onComplete }: { onComplete: () => void }
   return (
     <div className="flex flex-col flex-1 items-center justify-center px-[24px]">
       <div className="w-[120px] h-[120px] rounded-full bg-neutral-light-10 flex items-center justify-center relative overflow-hidden mb-[32px]">
-        <div className="absolute bottom-0 w-[150%] h-[40%] bg-primary-50 opacity-60 rounded-[50%]" style={{ transform: 'rotate(-5deg) translateY(20%)' }} />
-        <div className="absolute bottom-0 w-[150%] h-[30%] bg-primary-20 opacity-80 rounded-[50%]" style={{ transform: 'rotate(5deg) translateY(10%)' }} />
+        <div 
+          className="absolute top-[50%] left-[-50%] w-[200%] h-[200%] bg-primary-50 opacity-60 rounded-[43%] animate-spin" 
+          style={{ animationDuration: '5s' }} 
+        />
+        <div 
+          className="absolute top-[55%] left-[-50%] w-[200%] h-[200%] bg-primary-20 opacity-80 rounded-[40%] animate-spin" 
+          style={{ animationDuration: '7s', animationDirection: 'reverse' }} 
+        />
         
         {phase === 1 ? (
           <Plant className="w-[48px] h-[48px] text-primary-0 z-10" />

@@ -18,7 +18,7 @@ export default function BottomNav() {
   else currentTab = "/home";
 
   return (
-    <div className="z-50 w-full max-w-app border-t border-gray-100 bg-white pb-safe">
+    <div className="z-50 w-full max-w-app bg-white pb-safe">
       <Tabs
         value={currentTab}
         onValueChange={(val) => router.push(val)}

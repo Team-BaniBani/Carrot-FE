@@ -50,7 +50,7 @@ export default function HandbookContainer() {
   const [activeCategory, setActiveCategory] = useState("전체");
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 max-w-[600px] w-full mx-auto bg-[#F2EAD9]">
+    <div className="flex-1 flex flex-col min-h-0 max-w-[600px] w-full mx-auto">
       <header className="flex h-[56px] items-center justify-center relative max-w-[600px] w-full px-[16px]">
        <Close className="absolute left-[16px]" />
         <h1 className="text-[16px] font-bold text-neutral-dark-0">식물 추천</h1>

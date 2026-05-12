@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import { Search, Sun, Wind, Thermometer, Droplet, Plant } from "public/icons";
 import SpaceFeatureAnalysis from "@/components/ui/spaceFeature/analysis/SpaceFeatureAnalysis";
 import Button from "@/components/ui/button/button";
@@ -33,12 +33,18 @@ export default function DiagnosisResult({ images, onRestart, onViewPlants }: Dia
         </div>
       </div>
 
-      <div className="flex gap-[12px] overflow-x-auto no-scrollbar mb-[32px]">
-        {images.map((img) => (
-          <div key={img.id} className="relative w-[100px] h-[100px] rounded-[16px] overflow-hidden shrink-0">
-            <Image src={img.url} alt="upload" fill className="object-cover" />
+      <div className="flex gap-[12px] z-10 overflow-x-auto no-scrollbar mb-[32px] shrink-0 min-h-[100px]">
+        {images && images.length > 0 ? (
+          images.map((img) => (
+            <div key={img.id} className="relative w-[100px] h-[100px] rounded-[16px] overflow-hidden shrink-0 bg-neutral-light-10">
+              <img src={img.url} alt="upload" className="w-full h-full object-cover" />
+            </div>
+          ))
+        ) : (
+          <div className="w-[100px] h-[100px] rounded-[16px] bg-neutral-light-10 flex items-center justify-center shrink-0">
+            <span className="text-[12px] text-neutral-dark-30 text-center px-2">사진 없음<br/>(상태 초기화됨)</span>
           </div>
-        ))}
+        )}
       </div>
 
       <div className="mb-[40px]">

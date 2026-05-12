@@ -11,7 +11,7 @@ interface DeletePhotoModalProps {
 export default function DeletePhotoModal({ onClose, onConfirm }: DeletePhotoModalProps) {
   return (
 
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-[24px]">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-[24px]">
       <div className="w-full max-w-[327px] bg-layer-canvas border border-border-subtle rounded-[12px] p-[12px] flex flex-col items-center gap-[24px]">
         
         <div className="flex flex-col items-center gap-[12px] w-full mt-[12px]">
