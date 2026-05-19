@@ -61,4 +61,5 @@ export const MY_PLANTS_SAVED: MyPlantItem[] = [
 export const MY_PLANTS_ACTIONS = {
   share: "카카오톡 공유",
   save: "이미지 저장",
+  saveSelected: "선택한 식물 저장",
 } as const;

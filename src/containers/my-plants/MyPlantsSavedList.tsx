@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { BlurIcon, Heart, LucidityIcon } from "@/../public/icons/index";
 import { cn } from "@/libs/utils";
 import { EnvironmentIconKey, MY_PLANTS_SAVED } from "@/constants/my-plants/content";
+import {
+  getMyPlantCardId,
+  useMyPlantsCaptureStore,
+} from "@/stores/useMyPlantsCaptureStore";
 
 const CHIP_CLASS_NAME =
   "inline-flex items-center rounded-full bg-primary-40 px-2 py-[2px] text-body-s text-primary";
@@ -17,6 +21,7 @@ const ENVIRONMENT_ICON_MAP: Record<EnvironmentIconKey, typeof LucidityIcon> = {
 export default function MyPlantsSavedList() {
   const router = useRouter();
   const [savedIds, setSavedIds] = useState(() => new Set(MY_PLANTS_SAVED.map((plant) => plant.id)));
+  const { isSelecting, selectedId, setSelectedId } = useMyPlantsCaptureStore();
 
   const handleToggleSaved = (id: string) => {
     setSavedIds((prev) => {
@@ -29,22 +34,42 @@ export default function MyPlantsSavedList() {
 
   return (
     <section className="flex flex-1 flex-col gap-card">
+      {isSelecting ? (
+        <p className="text-body-s text-primary-20">저장할 식물을 선택하세요.</p>
+      ) : null}
       {MY_PLANTS_SAVED.map((plant) => {
         const isSaved = savedIds.has(plant.id);
+        const isSelected = selectedId === plant.id;
 
         return (
           <article
             key={plant.id}
+            id={getMyPlantCardId(plant.id)}
             role="button"
             tabIndex={0}
-            onClick={() => router.push(`/dictionary/${plant.id}`)}
+            aria-pressed={isSelected}
+            onClick={() => {
+              if (isSelecting) {
+                setSelectedId(isSelected ? null : plant.id);
+                return;
+              }
+              router.push(`/dictionary/${plant.id}`);
+            }}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
+                if (isSelecting) {
+                  setSelectedId(isSelected ? null : plant.id);
+                  return;
+                }
                 router.push(`/dictionary/${plant.id}`);
               }
             }}
-            className="cursor-pointer rounded-card bg-card-bg p-page shadow-[0_0_20px_rgba(42,31,19,0.1)]"
+            className={cn(
+              "cursor-pointer rounded-card border border-transparent bg-card-bg p-page shadow-[0_0_20px_rgba(42,31,19,0.1)] transition-colors",
+              isSelecting && "hover:border-border-subtle",
+              isSelected && "border-border-highlight",
+            )}
           >
             <header className="flex items-center justify-between">
               <div className="flex items-center gap-2">
