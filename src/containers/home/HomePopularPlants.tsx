@@ -10,6 +10,7 @@ type HomePopularPlantsProps = {
 
 export default function HomePopularPlants({ plants }: HomePopularPlantsProps) {
   const router = useRouter();
+
   return (
     <section className="mt-6">
       <h2 className="text-[16px] font-bold leading-[24px] tracking-[0.64px] text-neutral-dark-0">

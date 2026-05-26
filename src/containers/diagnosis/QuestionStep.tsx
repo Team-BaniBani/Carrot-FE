@@ -8,7 +8,7 @@ import { Search } from "public/icons";
 
 interface QuestionStepProps {
   stepIndex: number;
-  onNext: () => void;
+  onNext: (answer: any) => void;
   onPrev: () => void;
 }
 
@@ -24,6 +24,21 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
 
   const handleInputChange = (key: string, value: string) => {
     setInputs((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleNext = () => {
+    if (question.type === "choice") {
+      if (stepIndex === 0) {
+        onNext({ pet: choice === 0 ? "YES" : "NO" });
+      } else if (stepIndex === 1) {
+        onNext({ watering: question.options?.[choice!] });
+      }
+    } else {
+      onNext({
+        temperature: inputs["온도"],
+        humidity: inputs["습도"],
+      });
+    }
   };
 
   const isNextDisabled =
@@ -96,7 +111,7 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
             text="환경 분석하기"
             variant="default"
             style={{ flex: 1 }}
-            onClick={onNext}
+            onClick={handleNext}
             disabled={isNextDisabled}
             leftIcon={<Search className="w-[20px] h-[20px]" />}
           />
@@ -105,7 +120,7 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
             text="다음"
             variant="default"
             style={{ flex: 1 }}
-            onClick={onNext}
+            onClick={handleNext}
             disabled={isNextDisabled}
           />
         )}

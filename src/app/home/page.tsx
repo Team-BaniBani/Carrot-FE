@@ -8,7 +8,7 @@ import DiagnosedSavedPlantsSection from "@/containers/home/DiagnosedSavedPlantsS
 import { getPopularPlants } from "@/services/plants/plants";
 
 export default async function HomePage() {
-  const isDiagnosed = getDiagnosisStatus();
+  const isDiagnosed = await getDiagnosisStatus();
   const popularPlants = isDiagnosed ? [] : await getPopularPlants();
 
   return (

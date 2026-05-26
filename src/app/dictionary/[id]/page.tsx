@@ -1,9 +1,9 @@
+import { getPlantDetail } from "@/services/plants/plants";
 import PlantDetailTopBar from "@/containers/dictionary/PlantDetailTopBar";
 import PlantDetailHero from "@/containers/dictionary/PlantDetailHero";
 import PlantDetailSummary from "@/containers/dictionary/PlantDetailSummary";
 import PlantDetailEnvironment from "@/containers/dictionary/PlantDetailEnvironment";
 import { PLANT_DETAIL_HEADER_TITLE } from "@/constants/dictionary/plantDetail";
-import { getPlantDetail } from "@/services/plants/plants";
 import { notFound } from "next/navigation";
 
 type PlantDetailPageProps = {
