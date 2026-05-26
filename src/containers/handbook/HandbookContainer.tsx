@@ -110,7 +110,7 @@ export default function HandbookContainer() {
         ) : (
           <div className="flex flex-col gap-[16px] w-full px-[16px] pb-[80px]">
             {filteredPlants.map((plant) => (
-              <button
+              <div
                 key={plant.id}
                 onClick={() => router.push(`/dictionary/${plant.id}`)}
                 className="text-left w-full"
@@ -120,8 +120,9 @@ export default function HandbookContainer() {
                   englishName={plant.name_en}
                   description={plant.explanation ?? `${plant.watering} · ${plant.appropriate_temperature}`}
                   badges={getPlantBadges(plant)}
+                  imageUrl={plant.image_path}
                 />
-              </button>
+              </div>
             ))}
             {filteredPlants.length === 0 && (
               <div className="flex flex-col items-center justify-center h-[200px] gap-[8px]">

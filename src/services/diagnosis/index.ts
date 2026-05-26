@@ -24,6 +24,7 @@ export interface PlantResponse {
   air_purification_effect: string;
   pet_stability: string;
   explanation?: string | null;
+  image_path: string;
 }
 
 export interface EnvironmentTypeSimple {
@@ -96,7 +97,7 @@ export async function diagnoseEnvironment(
   humidity: string
 ): Promise<EnvironmentDiagnosisResponse> {
   const mappedSunlight = convertSunlightToInputEnum(sunlight);
-  
+
   // 습도 값 포맷 보장 (예: "60" -> "60%")
   let formattedHumidity = humidity.trim();
   if (formattedHumidity && !formattedHumidity.endsWith("%")) {

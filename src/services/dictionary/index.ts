@@ -14,5 +14,7 @@ export async function getPlantDetail(id: string): Promise<PlantResponse> {
  */
 export async function listPlants(): Promise<PlantResponse[]> {
   const response = await axiosInstance.get<PlantResponse[]>("/plants");
+  console.log(response.data);
   return response.data;
+
 }
