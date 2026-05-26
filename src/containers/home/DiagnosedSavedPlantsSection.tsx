@@ -3,14 +3,14 @@
 import {
   DIAGNOSED_EMPTY_SAVED_PLANTS_DESCRIPTION,
   DIAGNOSED_EMPTY_SAVED_PLANTS_TITLE,
-  DIAGNOSED_SAVED_PLANTS,
   DIAGNOSED_SAVED_PLANTS_TITLE,
 } from "@/constants/home/diagnosed";
 import { useRouter } from "next/navigation";
 import { Plant } from "@/../public/icons/index";
+import { useSavedPlants } from "@/hooks/useSavedPlants";
 
 export default function DiagnosedSavedPlantsSection() {
-  const hasSavedPlants = DIAGNOSED_SAVED_PLANTS.length > 0;
+  const { savedPlants } = useSavedPlants();
   const router = useRouter();
 
   return (
@@ -19,9 +19,9 @@ export default function DiagnosedSavedPlantsSection() {
         {DIAGNOSED_SAVED_PLANTS_TITLE}
       </h2>
 
-      {hasSavedPlants ? (
+      {savedPlants.length > 0 ? (
         <div className="mt-[6px] flex flex-col gap-2">
-          {DIAGNOSED_SAVED_PLANTS.map((plant) => (
+          {savedPlants.map((plant) => (
             <article
               key={plant.id}
               role="button"
@@ -38,7 +38,9 @@ export default function DiagnosedSavedPlantsSection() {
                 <p className="text-[16px] font-bold leading-[24px] tracking-[0.64px] text-primary">
                   {plant.name}
                 </p>
-                <p className="text-[12px] leading-[18px] text-primary-20">{plant.description}</p>
+                <p className="text-[12px] leading-[18px] text-primary-20">
+                  {plant.tags.join(" · ")}
+                </p>
               </div>
             </article>
           ))}

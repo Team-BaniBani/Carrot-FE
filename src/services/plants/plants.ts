@@ -42,34 +42,27 @@ type PlantResponse = {
   view_count?: number | null;
 };
 
-const DEFAULT_API_BASE_URL = "http://localhost:8001";
+const DEFAULT_API_BASE_URL = "http://localhost:8000";
+const DEFAULT_IMAGE_BASE_URL = "http://localhost:8000";
+
 const API_BASE_URL = (
   process.env.PLANT_API_BASE_URL ??
   process.env.NEXT_PUBLIC_PLANT_API_BASE_URL ??
   DEFAULT_API_BASE_URL
 ).replace(/\/$/, "");
-const API_PREFIX = `${API_BASE_URL}/api/v1`;
 
-const normalizeImageOrigin = (imageUrl: string) => {
-  try {
-    const parsed = new URL(imageUrl);
-    const apiOrigin = new URL(API_BASE_URL);
-    if (parsed.hostname === apiOrigin.hostname && parsed.port !== apiOrigin.port) {
-      parsed.protocol = apiOrigin.protocol;
-      parsed.port = apiOrigin.port;
-      return parsed.toString();
-    }
-  } catch {
-    return imageUrl;
-  }
-  return imageUrl;
-};
+const IMAGE_BASE_URL = (
+  process.env.NEXT_PUBLIC_IMAGE_BASE_URL ??
+  DEFAULT_IMAGE_BASE_URL
+).replace(/\/$/, "");
+
+const API_PREFIX = `${API_BASE_URL}/api/v1`;
 
 const resolveImageUrl = (imagePath: string | null | undefined) => {
   if (!imagePath) return "/icons/plant.svg";
-  if (imagePath.startsWith("http")) return normalizeImageOrigin(imagePath);
+  if (imagePath.startsWith("http")) return imagePath;
   const normalized = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
-  return `${API_BASE_URL}${normalized}`;
+  return `${IMAGE_BASE_URL}${normalized}`;
 };
 
 const formatAirPurification = (value: string | null | undefined) =>
