@@ -1,4 +1,7 @@
-import type { PlantEnvironmentId, PlantEnvironmentItem } from "@/constants/dictionary/plantDetail";
+import type {
+  PlantEnvironmentId,
+  PlantEnvironmentItem,
+} from "@/services/plants/plants";
 import {
   HumidityIcon,
   SunlightIcon,
@@ -27,9 +30,9 @@ function EnvironmentCard({ item }: { item: PlantEnvironmentItem }) {
   );
 }
 
-interface PlantDetailEnvironmentProps {
+type PlantDetailEnvironmentProps = {
   environment: PlantEnvironmentItem[];
-}
+};
 
 export default function PlantDetailEnvironment({ environment }: PlantDetailEnvironmentProps) {
   return (

@@ -1,17 +1,26 @@
-// next.config.js
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    "localhost",
+    "127.0.0.1",
+  ],
   images: {
-    dangerouslyAllowSVG: true,
-    unoptimized: true,  // ✅ 개발환경에서 이미지 최적화 끄기
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '8000',
-        pathname: '/assets/**',
+        protocol: "http",
+        hostname: "localhost",
+        port: "8001",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "10.150.150.224",
+        port: "8001",
+        pathname: "/**",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;

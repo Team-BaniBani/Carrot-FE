@@ -1,14 +1,19 @@
 const CHIP_CLASS_NAME =
   "inline-flex items-center rounded-full bg-primary-40 px-2 py-[2px] text-body-s text-primary";
 
-interface PlantDetailSummaryProps {
+type PlantDetailSummaryProps = {
   name: string;
   englishName: string;
-  description: string;
   tags: string[];
-}
+  description: string;
+};
 
-export default function PlantDetailSummary({ name, englishName, description, tags }: PlantDetailSummaryProps) {
+export default function PlantDetailSummary({
+  name,
+  englishName,
+  tags,
+  description,
+}: PlantDetailSummaryProps) {
   return (
     <section className="space-y-3">
       <div className="space-y-0.5">
@@ -24,9 +29,7 @@ export default function PlantDetailSummary({ name, englishName, description, tag
         ))}
       </div>
 
-      <p className="text-body-s text-neutral-dark-0">
-        {description}
-      </p>
+      <p className="text-body-s text-neutral-dark-0">{description}</p>
     </section>
   );
 }

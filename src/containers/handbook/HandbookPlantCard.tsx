@@ -56,6 +56,8 @@ export default function PlantCard({
               <button
                 type="button"
                 onClick={onBookmarkClick}
+                aria-pressed={isBookmarked}
+                aria-label={`${name} 저장 토글`}
                 className="transition-colors mt-[-4px] mr-[-4px] p-[4px]"
               >
                 <HeartIcon filled={isBookmarked} className="w-[24px] h-[24px]" />

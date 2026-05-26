@@ -1,15 +1,15 @@
-interface PlantDetailHeroProps {
+type PlantDetailHeroProps = {
   imageUrl: string;
-  altText: string;
-}
+  name: string;
+};
 
-export default function PlantDetailHero({ imageUrl, altText }: PlantDetailHeroProps) {
+export default function PlantDetailHero({ imageUrl, name }: PlantDetailHeroProps) {
   return (
     <div className="w-full overflow-hidden rounded-[24px]">
       <img
         src={imageUrl}
-        alt={altText}
-        className="w-full h-auto"
+        alt={name}
+        className="h-auto w-full"
       />
     </div>
   );

@@ -1,35 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import FilterChip from "./HandbookFilterChip";
 import PlantCard from "./HandbookPlantCard";
 import { Close } from "public/icons";
-import { listPlants } from "@/services/dictionary";
-import type { PlantResponse } from "@/services/diagnosis";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSavedPlants } from "@/hooks/useSavedPlants";
+import { getPlantList } from "@/services/plants/plants";
 import { recommendPlants } from "@/services/diagnosis";
+import type { PlantListItem } from "@/services/plants/plants";
 
 const CATEGORIES = ["전체", "관리 쉬운", "공기 정화", "소형"];
 
-function mapManagementLabel(val: string): string {
-  if (val === "매우 쉬움" || val === "쉬움") return "관리 쉬움";
-  if (val === "보통") return "관리 보통";
-  return "관리 어려움";
-}
-
-function getPlantBadges(plant: PlantResponse): string[] {
-  return [
-    mapManagementLabel(plant.management_difficulty),
-    `공기정화 ${plant.air_purification_effect}`,
-    plant.size,
-  ];
-}
-
 export default function HandbookContainer() {
   const [activeCategory, setActiveCategory] = useState("전체");
-  const [plants, setPlants] = useState<PlantResponse[]>([]);
+  const [plants, setPlants] = useState<PlantListItem[]>([]);
   const [envName, setEnvName] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const { savedIds, toggleSaved } = useSavedPlants();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -42,10 +30,17 @@ export default function HandbookContainer() {
         if (envId) {
           const result = await recommendPlants(envId);
           setEnvName(result.env_type.name);
-          const allPlants = [...result.optimal, ...result.possible];
+          const allPlants = [...result.optimal, ...result.possible].map((p) => ({
+            id: p.id,
+            name: p.name_ko,
+            englishName: p.name_en,
+            description: p.explanation ?? "",
+            badges: [p.management_difficulty, `공기정화 ${p.air_purification_effect}`, p.size].filter(Boolean),
+            imageUrl: p.image_path ?? undefined,
+          }));
           setPlants(allPlants);
         } else {
-          const all = await listPlants();
+          const all = await getPlantList();
           setPlants(all);
         }
       } catch (err) {
@@ -60,15 +55,9 @@ export default function HandbookContainer() {
 
   const filteredPlants = plants.filter((plant) => {
     if (activeCategory === "전체") return true;
-    if (activeCategory === "관리 쉬운") {
-      return plant.management_difficulty === "쉬움" || plant.management_difficulty === "매우 쉬움";
-    }
-    if (activeCategory === "공기 정화") {
-      return plant.air_purification_effect === "높음" || plant.air_purification_effect === "매우 높음";
-    }
-    if (activeCategory === "소형") {
-      return plant.size === "소형" || plant.size === "소형~중형";
-    }
+    if (activeCategory === "관리 쉬운") return plant.badges.some((b) => b === "쉬움" || b === "매우 쉬움");
+    if (activeCategory === "공기 정화") return plant.badges.some((b) => b.includes("공기정화"));
+    if (activeCategory === "소형") return plant.badges.some((b) => b === "소형" || b.includes("소형"));
     return true;
   });
 
@@ -113,14 +102,22 @@ export default function HandbookContainer() {
               <div
                 key={plant.id}
                 onClick={() => router.push(`/dictionary/${plant.id}`)}
-                className="text-left w-full"
+                className="cursor-pointer w-full"
               >
                 <PlantCard
-                  name={plant.name_ko}
-                  englishName={plant.name_en}
-                  description={plant.explanation ?? `${plant.watering} · ${plant.appropriate_temperature}`}
-                  badges={getPlantBadges(plant)}
-                  imageUrl={plant.image_path}
+                  name={plant.name}
+                  englishName={plant.englishName}
+                  description={plant.description}
+                  badges={plant.badges}
+                  imageUrl={plant.imageUrl}
+                  isBookmarked={savedIds.includes(plant.id)}
+                  onBookmarkClick={() => toggleSaved({
+                    id: plant.id,
+                    name: plant.name,
+                    englishName: plant.englishName,
+                    imageUrl: plant.imageUrl ?? "/icons/plant.svg",
+                    tags: plant.badges,
+                  })}
                 />
               </div>
             ))}
