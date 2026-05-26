@@ -1,12 +1,14 @@
 "use client";
 
-import {
-  HOME_POPULAR_PLANTS,
-  HOME_POPULAR_SECTION_TITLE,
-} from "@/constants/home/content";
+import { HOME_POPULAR_SECTION_TITLE } from "@/constants/home/content";
 import { useRouter } from "next/navigation";
+import type { PlantListItem } from "@/services/plants/plants";
 
-export default function HomePopularPlants() {
+type HomePopularPlantsProps = {
+  plants: PlantListItem[];
+};
+
+export default function HomePopularPlants({ plants }: HomePopularPlantsProps) {
   const router = useRouter();
   return (
     <section className="mt-6">
@@ -15,7 +17,7 @@ export default function HomePopularPlants() {
       </h2>
 
       <div className="mt-[6px] flex gap-3 overflow-x-auto pb-1">
-        {HOME_POPULAR_PLANTS.map((plant) => (
+        {plants.map((plant) => (
           <article
             key={plant.id}
             role="button"
@@ -27,7 +29,7 @@ export default function HomePopularPlants() {
             className="cursor-pointer w-[clamp(96px,22vw,120px)] shrink-0 bg-card-bg p-3 shadow-[0_0_20px_rgba(42,31,19,0.1)]"
           >
             <img
-              src={plant.imageUrl}
+              src={plant.imageUrl ?? "/icons/plant.svg"}
               alt={plant.name}
               className="aspect-square w-full object-cover"
             />
@@ -35,7 +37,9 @@ export default function HomePopularPlants() {
               <p className="text-[16px] font-bold leading-[24px] tracking-[0.64px] text-primary">
                 {plant.name}
               </p>
-              <p className="text-[12px] leading-[18px] text-primary-20">{plant.description}</p>
+              <p className="text-[12px] leading-[18px] text-primary-20">
+                {plant.badges[0] ?? plant.description}
+              </p>
             </div>
           </article>
         ))}

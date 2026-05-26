@@ -1,5 +1,7 @@
 import HandbookContainer from "@/containers/handbook/HandbookContainer";
+import { getPlantList } from "@/services/plants/plants";
 
-export default function HandbookPage() {
-  return <HandbookContainer />;
+export default async function HandbookPage() {
+  const plants = await getPlantList();
+  return <HandbookContainer plants={plants} />;
 }

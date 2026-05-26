@@ -1,12 +1,15 @@
-import { PLANT_DETAIL } from "@/constants/dictionary/plantDetail";
+type PlantDetailHeroProps = {
+  imageUrl: string;
+  name: string;
+};
 
-export default function PlantDetailHero() {
+export default function PlantDetailHero({ imageUrl, name }: PlantDetailHeroProps) {
   return (
     <div className="w-full overflow-hidden rounded-[24px]">
       <img
-        src={PLANT_DETAIL.imageUrl}
-        alt={PLANT_DETAIL.name}
-        className="w-full h-auto"
+        src={imageUrl}
+        alt={name}
+        className="h-auto w-full"
       />
     </div>
   );

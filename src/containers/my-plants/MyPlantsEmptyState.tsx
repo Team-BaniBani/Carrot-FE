@@ -4,9 +4,13 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button/button";
 import { Plant } from "@/../public/icons/index";
 import { MY_PLANTS_EMPTY } from "@/constants/my-plants/content";
+import { useSavedPlants } from "@/hooks/useSavedPlants";
 
 export default function MyPlantsEmptyState() {
   const router = useRouter();
+  const { savedIds, isReady } = useSavedPlants();
+
+  if (!isReady || savedIds.length > 0) return null;
 
   return (
     <section className="flex flex-1 flex-col items-center justify-center gap-8">

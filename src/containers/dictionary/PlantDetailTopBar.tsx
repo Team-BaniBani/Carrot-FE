@@ -1,14 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Heart } from "@/../public/icons/index";
 import { cn } from "@/libs/utils";
-import { PLANT_DETAIL } from "@/constants/dictionary/plantDetail";
+import { useSavedPlants } from "@/hooks/useSavedPlants";
+import { SavedPlantData } from "@/stores/useSavedPlantsStore";
 
-export default function PlantDetailTopBar() {
+type PlantDetailTopBarProps = {
+  plantData: SavedPlantData;
+  title: string;
+};
+
+export default function PlantDetailTopBar({ plantData, title }: PlantDetailTopBarProps) {
   const router = useRouter();
-  const [isSaved, setIsSaved] = useState(true);
+  const { savedIds, toggleSaved } = useSavedPlants();
+  const isSaved = savedIds.includes(plantData.id);
 
   return (
     <div className="flex items-center justify-between">
@@ -21,13 +27,13 @@ export default function PlantDetailTopBar() {
         <ArrowLeft className="h-6 w-6" />
       </button>
       <span className="text-heading-xxs text-neutral-dark-0">
-        {PLANT_DETAIL.headerTitle}
+        {title}
       </span>
       <button
         type="button"
         aria-pressed={isSaved}
         aria-label="식물 저장 토글"
-        onClick={() => setIsSaved((prev) => !prev)}
+        onClick={() => toggleSaved(plantData)}
         className="rounded-full p-1 transition-transform active:scale-90"
       >
         <Heart

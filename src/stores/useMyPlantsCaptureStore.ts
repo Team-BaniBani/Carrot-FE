@@ -1,9 +1,11 @@
 import { create } from "zustand";
 
+export type MyPlantsSelectMode = "none" | "capture" | "share";
+
 type MyPlantsCaptureState = {
-  isSelecting: boolean;
+  selectMode: MyPlantsSelectMode;
   selectedId: string | null;
-  setIsSelecting: (value: boolean) => void;
+  setSelectMode: (mode: MyPlantsSelectMode) => void;
   setSelectedId: (id: string | null) => void;
   reset: () => void;
 };
@@ -11,9 +13,9 @@ type MyPlantsCaptureState = {
 export const getMyPlantCardId = (id: string) => `my-plant-card-${id}`;
 
 export const useMyPlantsCaptureStore = create<MyPlantsCaptureState>((set) => ({
-  isSelecting: false,
+  selectMode: "none",
   selectedId: null,
-  setIsSelecting: (value) => set({ isSelecting: value }),
+  setSelectMode: (mode) => set({ selectMode: mode }),
   setSelectedId: (id) => set({ selectedId: id }),
-  reset: () => set({ isSelecting: false, selectedId: null }),
+  reset: () => set({ selectMode: "none", selectedId: null }),
 }));
