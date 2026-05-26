@@ -4,11 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Heart } from "@/../public/icons/index";
 import { cn } from "@/libs/utils";
-import { PLANT_DETAIL } from "@/constants/dictionary/plantDetail";
 
-export default function PlantDetailTopBar() {
+interface PlantDetailTopBarProps {
+  plantId: string;
+  plantName: string;
+}
+
+export default function PlantDetailTopBar({ plantId, plantName }: PlantDetailTopBarProps) {
   const router = useRouter();
-  const [isSaved, setIsSaved] = useState(true);
+  const [isSaved, setIsSaved] = useState(false);
 
   return (
     <div className="flex items-center justify-between">
@@ -20,13 +24,11 @@ export default function PlantDetailTopBar() {
       >
         <ArrowLeft className="h-6 w-6" />
       </button>
-      <span className="text-heading-xxs text-neutral-dark-0">
-        {PLANT_DETAIL.headerTitle}
-      </span>
+      <span className="text-heading-xxs text-neutral-dark-0">식물 정보</span>
       <button
         type="button"
         aria-pressed={isSaved}
-        aria-label="식물 저장 토글"
+        aria-label={`${plantName} 저장 토글`}
         onClick={() => setIsSaved((prev) => !prev)}
         className="rounded-full p-1 transition-transform active:scale-90"
       >

@@ -1,18 +1,23 @@
-import { PLANT_DETAIL } from "@/constants/dictionary/plantDetail";
-
 const CHIP_CLASS_NAME =
   "inline-flex items-center rounded-full bg-primary-40 px-2 py-[2px] text-body-s text-primary";
 
-export default function PlantDetailSummary() {
+interface PlantDetailSummaryProps {
+  name: string;
+  englishName: string;
+  description: string;
+  tags: string[];
+}
+
+export default function PlantDetailSummary({ name, englishName, description, tags }: PlantDetailSummaryProps) {
   return (
     <section className="space-y-3">
       <div className="space-y-0.5">
-        <h1 className="text-heading-s text-primary">{PLANT_DETAIL.name}</h1>
-        <p className="text-body-m text-primary-20">{PLANT_DETAIL.englishName}</p>
+        <h1 className="text-heading-s text-primary">{name}</h1>
+        <p className="text-body-m text-primary-20">{englishName}</p>
       </div>
 
       <div className="flex flex-wrap gap-1.5">
-        {PLANT_DETAIL.tags.map((tag) => (
+        {tags.map((tag) => (
           <span key={tag} className={CHIP_CLASS_NAME}>
             {tag}
           </span>
@@ -20,7 +25,7 @@ export default function PlantDetailSummary() {
       </div>
 
       <p className="text-body-s text-neutral-dark-0">
-        {PLANT_DETAIL.description}
+        {description}
       </p>
     </section>
   );

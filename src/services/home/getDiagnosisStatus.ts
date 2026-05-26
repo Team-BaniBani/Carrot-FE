@@ -1,3 +1,6 @@
-export default function getDiagnosisStatus(): boolean {
-  return Boolean(process.env.NEXT_PUBLIC_HOME_DIAGNOSIS_TEST_STATUS);
+import { cookies } from "next/headers";
+
+export default async function getDiagnosisStatus(): Promise<boolean> {
+  const cookieStore = await cookies();
+  return cookieStore.get("diagnosis-completed")?.value === "true";
 }

@@ -6,8 +6,8 @@ import HomePlantTip from "@/containers/home/HomePlantTip";
 import DiagnosedRediagnoseAction from "@/containers/home/DiagnosedRediagnoseAction";
 import DiagnosedSavedPlantsSection from "@/containers/home/DiagnosedSavedPlantsSection";
 
-export default function HomePage() {
-  const isDiagnosed = getDiagnosisStatus();
+export default async function HomePage() {
+  const isDiagnosed = await getDiagnosisStatus();
 
   return (
     <div className="mx-auto flex flex-1 w-full max-w-app flex-col overflow-auto bg-background px-4 pb-6 pt-6 min-h-0">

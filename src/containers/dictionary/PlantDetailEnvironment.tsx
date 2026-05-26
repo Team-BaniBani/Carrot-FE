@@ -1,8 +1,4 @@
-import {
-  PLANT_DETAIL,
-  PlantEnvironmentId,
-  PlantEnvironmentItem,
-} from "@/constants/dictionary/plantDetail";
+import type { PlantEnvironmentId, PlantEnvironmentItem } from "@/constants/dictionary/plantDetail";
 import {
   HumidityIcon,
   SunlightIcon,
@@ -31,12 +27,16 @@ function EnvironmentCard({ item }: { item: PlantEnvironmentItem }) {
   );
 }
 
-export default function PlantDetailEnvironment() {
+interface PlantDetailEnvironmentProps {
+  environment: PlantEnvironmentItem[];
+}
+
+export default function PlantDetailEnvironment({ environment }: PlantDetailEnvironmentProps) {
   return (
     <section className="space-y-1.5">
       <h2 className="text-heading-xxs text-neutral-dark-0">환경 상세</h2>
       <div className="grid grid-cols-2 gap-1.5">
-        {PLANT_DETAIL.environment.map((item) => (
+        {environment.map((item) => (
           <EnvironmentCard key={item.id} item={item} />
         ))}
       </div>
