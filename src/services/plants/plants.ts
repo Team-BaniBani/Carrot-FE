@@ -42,8 +42,8 @@ type PlantResponse = {
   view_count?: number | null;
 };
 
-const DEFAULT_API_BASE_URL = "http://localhost:8000";
-const DEFAULT_IMAGE_BASE_URL = "http://localhost:8000";
+const DEFAULT_API_BASE_URL = "https://carrot-back.vercel.app";
+const DEFAULT_IMAGE_BASE_URL = "https://carrot-back.vercel.app";
 
 const API_BASE_URL = (
   process.env.PLANT_API_BASE_URL ??
