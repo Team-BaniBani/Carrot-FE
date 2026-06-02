@@ -13,7 +13,7 @@ export default function BottomNav() {
   let currentTab = pathname;
   if (pathname === "/" || pathname.startsWith("/home")) currentTab = "/home";
   else if (pathname.startsWith("/diagnosis")) currentTab = "/diagnosis";
-  else if (pathname.startsWith("/dictionary")) currentTab = "/dictionary";
+  else if (pathname.startsWith("/handbook") || pathname.startsWith("/dictionary")) currentTab = "/handbook";
   else if (pathname.startsWith("/my-plants")) currentTab = "/my-plants";
   else currentTab = "/home";
 

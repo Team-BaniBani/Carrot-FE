@@ -1,4 +1,4 @@
-import { Camera,Upload } from "public/icons";
+import { Camera, Upload } from "public/icons";
 import { cn } from "@/libs/utils";
 import { useRef, ChangeEvent } from "react";
 
@@ -49,22 +49,13 @@ export default function UploadBox({ onUpload, className }: UploadBoxProps) {
         </div>
       </div>
 
-      <div className="flex gap-[8px] mt-[16px]">
-        <button 
-          onClick={handleUploadClick}
-          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-primary-30 border border-primary-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
-        >
-          <Camera className="w-[14px] h-[14px]"/>
-          촬영  
-        </button>
-        <button 
-          onClick={handleUploadClick}
-          className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] rounded-[4px] bg-primary-30 border border-primary-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
-        >
-          <Upload className="w-[14px] h-[14px]" />
-          업로드
-        </button>
-      </div>
+      <button
+        onClick={handleUploadClick}
+        className="flex items-center justify-center gap-[4px] w-[80px] h-[26px] py-[4px] mt-[16px] rounded-[4px] bg-primary-30 border border-primary-10 text-[12px] font-medium text-neutral-dark-10 active:scale-[0.98] transition-all"
+      >
+        <Upload className="w-[14px] h-[14px]" />
+        업로드
+      </button>
     </div>
   );
 }
