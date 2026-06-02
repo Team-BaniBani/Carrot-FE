@@ -148,8 +148,8 @@ export default function MyPlantsActions() {
         kakao.Share.sendDefault({
           objectType: "feed",
           content: {
-            title: "식물 정보",
-            description: "식물 상세 보기",
+            title: "이 식물 어때요? 한번 키워봐요 🌿",
+            description: "친구가 식물 정보를 공유했어요!\n자세한 정보를 확인해보세요.",
             imageUrl: shareImageUrl,
             link: {
               mobileWebUrl: shareUrl,
@@ -158,7 +158,7 @@ export default function MyPlantsActions() {
           },
           buttons: [
             {
-              title: "식물 정보 보기",
+              title: "식물 보러가기",
               link: {
                 mobileWebUrl: shareUrl,
                 webUrl: shareUrl,
@@ -167,7 +167,7 @@ export default function MyPlantsActions() {
           ],
         });
       } else if (navigator.share) {
-        await navigator.share({ title: "식물 정보", url: shareUrl });
+        await navigator.share({ title: "이 식물 어때요? 한번 키워봐요 🌿", url: shareUrl });
       } else if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(shareUrl);
       } else {
