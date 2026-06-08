@@ -76,7 +76,7 @@ const buildBadges = (plant: PlantResponse) =>
   ].filter((value): value is string => Boolean(value));
 
 const fetchPlantApi = async <T>(path: string): Promise<T> => {
-  const response = await fetch(`${API_PREFIX}${path}`, { cache: "no-store" });
+  const response = await fetch(`${API_PREFIX}${path}`, { next: { revalidate: 300 } });
   if (!response.ok) {
     throw new Error(`Plant API request failed: ${response.status}`);
   }
@@ -132,7 +132,7 @@ export async function getPopularPlants(limit = 5): Promise<PlantListItem[]> {
 
 export async function getPlantDetail(plantId: string): Promise<PlantDetailItem | null> {
   const response = await fetch(`${API_PREFIX}/plants/${encodeURIComponent(plantId)}`, {
-    cache: "no-store",
+    next: { revalidate: 300 },
   });
   if (response.status === 404) return null;
   if (!response.ok) {
