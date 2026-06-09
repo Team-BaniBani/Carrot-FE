@@ -24,15 +24,34 @@ export default function DiagnosisContainer() {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [answers, setAnswers] = useState<any>({});
   const [resultData, setResultData] = useState<any>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const hiddenInputRef = useRef<HTMLInputElement>(null);
 
+  const MAX_FILES = 3;
+  const MAX_SIZE_MB = 5;
+
   const handleUpload = (files: FileList) => {
-    const newImages: ImageItem[] = Array.from(files)
-      .slice(0, 3 - images.length)
+    setUploadError(null);
+    const fileArray = Array.from(files);
+
+    const oversized = fileArray.find((f) => f.size > MAX_SIZE_MB * 1024 * 1024);
+    if (oversized) {
+      setUploadError(`${oversized.name} 파일이 5MB를 초과해요`);
+      return;
+    }
+
+    const remaining = MAX_FILES - images.length;
+    if (remaining <= 0) {
+      setUploadError("사진은 최대 3장까지 추가할 수 있어요");
+      return;
+    }
+
+    const newImages: ImageItem[] = fileArray
+      .slice(0, remaining)
       .map((file) => ({
         id: Math.random().toString(36).substring(7),
         url: URL.createObjectURL(file),
-        file: file,
+        file,
       }));
 
     setImages((prev) => [...prev, ...newImages]);
@@ -80,6 +99,10 @@ export default function DiagnosisContainer() {
                     : "여러 장이면 분석이 더 정확해요"}
               </p>
             </div>
+
+            {uploadError && (
+              <p className="text-[13px] text-red-400 text-center -mt-4">{uploadError}</p>
+            )}
 
             {isEmpty ? (
               <UploadBox onUpload={handleUpload} />

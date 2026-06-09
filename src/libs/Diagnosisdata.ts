@@ -7,6 +7,7 @@ export interface DiagnosisQuestion {
   type: QuestionType;
   options?: string[];
   inputs?: string[];
+  placeholders?: string[];
 }
 
 export const DIAGNOSIS_QUESTIONS: DiagnosisQuestion[] = [
@@ -30,5 +31,6 @@ export const DIAGNOSIS_QUESTIONS: DiagnosisQuestion[] = [
     description: "식물에 따라 반려동물에게 위협이 될 수 있어요",
     type: "input",
     inputs: ["온도", "습도"],
+    placeholders: ["예: 23 (°C)", "예: 60 (%)"],
   },
 ];

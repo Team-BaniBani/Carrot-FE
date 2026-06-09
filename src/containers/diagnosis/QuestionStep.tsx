@@ -16,14 +16,26 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
   const question = DIAGNOSIS_QUESTIONS[stepIndex];
   const [choice, setChoice] = useState<number | null>(null);
   const [inputs, setInputs] = useState<Record<string, string>>({});
+  const [inputErrors, setInputErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     setChoice(null);
     setInputs({});
+    setInputErrors({});
   }, [stepIndex]);
+
+  const validateNumber = (key: string, value: string): string => {
+    if (value.trim() === "") return "";
+    const num = parseFloat(value);
+    if (isNaN(num)) return "숫자만 입력해주세요";
+    if (key === "온도" && (num < -20 || num > 60)) return "-20 ~ 60°C 범위로 입력해주세요";
+    if (key === "습도" && (num < 0 || num > 100)) return "0 ~ 100% 범위로 입력해주세요";
+    return "";
+  };
 
   const handleInputChange = (key: string, value: string) => {
     setInputs((prev) => ({ ...prev, [key]: value }));
+    setInputErrors((prev) => ({ ...prev, [key]: validateNumber(key, value) }));
   };
 
   const handleNext = () => {
@@ -44,7 +56,12 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
   const isNextDisabled =
     question.type === "choice"
       ? choice === null
-      : question.inputs?.some((input) => !inputs[input] || inputs[input].trim() === "");
+      : question.inputs?.some(
+          (input) =>
+            !inputs[input] ||
+            inputs[input].trim() === "" ||
+            !!validateNumber(input, inputs[input])
+        );
 
   return (
     <div className="flex flex-col flex-1 px-[24px] py-[32px] overflow-y-auto no-scrollbar relative">
@@ -92,14 +109,23 @@ export default function QuestionStep({ stepIndex, onNext, onPrev }: QuestionStep
 
         {question.type === "input" &&
           question.inputs?.map((inputLabel, idx) => (
-            <div key={idx} className="w-full h-[64px] rounded-[12px] border border-border-subtle bg-neutral-light-n10 px-[24px] flex items-center">
-              <input
-                type="text"
-                placeholder={inputLabel}
-                value={inputs[inputLabel] || ""}
-                onChange={(e) => handleInputChange(inputLabel, e.target.value)}
-                className="w-full bg-transparent outline-none text-[18px] font-medium text-neutral-dark-0 placeholder:text-neutral-dark-30"
-              />
+            <div key={idx} className="flex flex-col gap-[6px]">
+              <div className={cn(
+                "w-full h-[64px] rounded-[12px] border bg-neutral-light-n10 px-[24px] flex items-center",
+                inputErrors[inputLabel] ? "border-red-400" : "border-border-subtle"
+              )}>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  placeholder={question.placeholders?.[idx] ?? inputLabel}
+                  value={inputs[inputLabel] || ""}
+                  onChange={(e) => handleInputChange(inputLabel, e.target.value)}
+                  className="w-full bg-transparent outline-none text-[18px] font-medium text-neutral-dark-0 placeholder:text-neutral-dark-30"
+                />
+              </div>
+              {inputErrors[inputLabel] && (
+                <p className="text-[12px] text-red-400 px-[4px]">{inputErrors[inputLabel]}</p>
+              )}
             </div>
           ))}
       </div>

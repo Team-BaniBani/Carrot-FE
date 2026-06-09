@@ -31,7 +31,16 @@ export default function AnalyzingStep({ images, answers, onComplete }: Analyzing
   const [phase, setPhase] = useState(1);
   const [checkPhase, setCheckPhase] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const hasRun = useRef(false);
+
+  const handleRetry = () => {
+    hasRun.current = false;
+    setError(null);
+    setPhase(1);
+    setCheckPhase(0);
+    setRetryCount((c) => c + 1);
+  };
 
   useEffect(() => {
     if (hasRun.current) return;
@@ -78,7 +87,7 @@ export default function AnalyzingStep({ images, answers, onComplete }: Analyzing
     };
 
     run();
-  }, []);
+  }, [retryCount]);
 
   if (error) {
     return (
@@ -88,7 +97,12 @@ export default function AnalyzingStep({ images, answers, onComplete }: Analyzing
         </div>
         <h2 className="text-[20px] font-bold text-primary-0 text-center">분석에 실패했어요</h2>
         <p className="text-[14px] text-primary-10 text-center leading-[1.6]">{error}</p>
-        <p className="text-[12px] text-neutral-dark-30 text-center">백엔드 서버가 실행 중인지 확인해주세요</p>
+        <button
+          onClick={handleRetry}
+          className="mt-2 px-[24px] h-[48px] rounded-[12px] bg-primary-0 text-white text-[16px] font-bold active:scale-[0.98] transition-all"
+        >
+          다시 시도하기
+        </button>
       </div>
     );
   }
